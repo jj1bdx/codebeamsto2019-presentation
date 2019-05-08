@@ -8,6 +8,23 @@ slidenumbers: true
 
 # [fit] The BEAM Programming Paradigm [^*]
 
+## ` `
+## ` `
+## ` `
+## ` `
+## ` `
+## ` `
+## ` `
+## ` `
+## ` `
+## ` `
+## ` `
+## ` `
+## ` `
+## ` `
+## Kenji Rikitake | @jj1bdx
+## #CodeBEAMSTO 2019
+
 [^*]: ... Or how I've been struggling to understand the well-designed ideas behind the Erlang/OTP, Elixir, and other BEAM languages and systems, while I still have a very hard time to learn "object-oriented" programming languages
 
 ---
@@ -21,6 +38,53 @@ Stockholm, Sweden
 @jj1bdx
 
 ^ Good afternoon, everybody. My name is Kenji Rikitake. I'm originally from Tokyo, Japan, and I'm going to talk about the BEAM Programming Paradigm.
+
+---
+
+# Programming paradigm?
+# What is that?
+# Is it about a programming *paradise*?
+
+^ When I first heard the phrase called "programming paradigm", I was perplexed. I didn't grasp the core meaning of the word "paradigm" at that time. All I knew then was there's no paradise on programming.
+
+---
+
+# Paradigm = pattern + worldview [^1]
+
+* A typical example or pattern of something; a model
+* A worldview underlying the theories and methodology of a particular scientific subject
+
+[^1]: New Oxford American Dictionary, macOS 10.14.4
+
+^ I later learned that the word paradigm was about a pattern, and a worldview represented by the underlying theories and methodology of a scientific subject.
+
+---
+
+# Programming Paradigm in Wikipedia
+
+> Programming paradigms are a way to classify programming languages based on their features.
+-- [Wikipedia](https://en.wikipedia.org/wiki/Programming_paradigm)
+
+^ In Wikipedia, there is a definition of programming paradigms, quote: programming paradigms are a way to classify programming languages based on their features. So, simply speaking, the word paradigm means the features, for programming.
+
+---
+
+# Languages -> Paradigms -> Concepts
+
+* Many languages belong to one paradigm
+* A paradigm may have many concepts
+
+## [fit] Peter Van Roy states there are 27 different programming paradigms [^2]
+
+[^2]: Peter Van Roy: [Programming Paradigms for Dummies: What Every Programmer Should Know](https://www.info.ucl.ac.be/~pvr/paradigms.html), 2009, Section 2
+
+^ Peter Van Roy, the first keynote speaker of this conference, has published a comprehensive reference for the programming paradigms, called Programming Paradigms for Dummies, publicly available on the web. In the document, he shows that many languages belongs to the same paradigm, and a paradigm may have many concepts.
+
+---
+
+
+
+
 
 ---
 
@@ -63,11 +127,13 @@ We will remember you.
 ---
 [.autoscale: true]
 
-# Photo credits
+# Photo / graphics credits
 
 * Title: [Photo by Masayoshi Yamase on Unsplash](https://unsplash.com/@myana)
 
 * Joe Armstrong: [Photo by Brian L. Troutwine](https://www.dropbox.com/sh/18w4l9vbmgu98ov/AAAiTRknnIBbJAOEmn72INRfa?dl=0), edited by Kenji Rikitake, licensed [CC BY-NC 4.0 International](https://creativecommons.org/licenses/by-nc/4.0/)
+
+* Pepabo R&D Institute Logo: GMO Pepabo, Inc.
 
 * All the other photos: Kenji Rikitake
 
