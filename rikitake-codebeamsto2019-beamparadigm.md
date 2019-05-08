@@ -135,6 +135,12 @@ Stockholm, Sweden
 
 ---
 
+# Quote from Programming Erlang [^3]
+
+![inline, fit](programming-erlang-lagom.png)
+
+
+[^3]: Joe Armstrong, ["Programming Erlang", Second Edition, Pragmatic Bookshelf](https://pragprog.com/book/jaerlang2/programming-erlang), 2013, Section 26.3, "Parallelizing Sequential Code"
 
 ---
 
