@@ -60,7 +60,7 @@ Stockholm, Sweden
 
 ---
 
-# Programming Paradigm in Wikipedia
+# Programming paradigm, shown in Wikipedia
 
 > Programming paradigms are a way to classify programming languages based on their features.
 -- [Wikipedia](https://en.wikipedia.org/wiki/Programming_paradigm)
@@ -69,21 +69,57 @@ Stockholm, Sweden
 
 ---
 
-# Languages -> Paradigms -> Concepts
+# Languages -> paradigms -> concepts
 
 * Many languages belong to one paradigm
+* A languages may have many paradigms available
 * A paradigm may have many concepts
 
 ## [fit] Peter Van Roy states there are 27 different programming paradigms [^2]
 
 [^2]: Peter Van Roy: [Programming Paradigms for Dummies: What Every Programmer Should Know](https://www.info.ucl.ac.be/~pvr/paradigms.html), 2009, Section 2
 
-^ Peter Van Roy, the first keynote speaker of this conference, has published a comprehensive reference for the programming paradigms, called Programming Paradigms for Dummies, publicly available on the web. In the document, he shows that many languages belongs to the same paradigm, and a paradigm may have many concepts.
+^ Peter Van Roy, the first keynote speaker of this conference, has published a comprehensive reference for the programming paradigms, called Programming Paradigms for Dummies, publicly available on the web. In the document, he shows that many languages belongs to the same paradigm, and a paradigm may have many concepts. His document explains twenty-seven paradigms, and it indeed represents the complexity of the real world.
 
 ---
 
+# Programming paradigm:
+## Language patterns, worldview, and features
+## Simplified characteristics of the features
+## Design philosophy
 
+^ Let me summarize a rather casual definition of the word "programming paradigm". It's about the language patterns, worldview, and the features. It also represents simplified characteristics of the features. And I'd like to define that it's a part of design philosophy of the language.
 
+---
+
+# Then what is the BEAM Programming Paradigm?
+
+---
+
+# The philosophy of the BEAM languages/systems:
+# [fit] Lagom
+
+^ I think the philosophy of the BEAM languages and systems is *Lagom*.
+
+---
+
+# Lagom
+
+## [fit] not too much, not too little, just right
+
+^ Lagom is a Swedish word explaning a state of not too much, not too little, and just right, amount, quantity, or a level of strength.
+
+---
+
+# [fit] 中庸
+## The doctrine of the Mean
+# μεσότης
+## Golden Middle Way
+# [fit] Lagom är bäst
+
+^ You can find a few philosophical concepts similar to lagom in the world. In China and Japan, the word Zhongyong or Chu-yaw, also called The doctrine of the Mean in English, is popular for not pursuing in the excessive ways. In the old Greek Ethics of Aristotle, it's called "mesotes", also called Golden Middle Way. And in Swedish, there's a phrase called Lagom är bäst, which means Lagom is best.
+
+---
 
 
 ---
