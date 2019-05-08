@@ -103,9 +103,23 @@ Stockholm, Sweden
 
 ---
 
+![](jen-p-541456-modified.jpg)
+
 # Lagom
 
 ## [fit] not too much, not too little, just right
+## ` `
+## ` `
+## ` `
+## ` `
+## ` `
+## ` `
+## ` `
+## ` `
+## ` `
+## ` `
+## ` `
+## ` `
 
 ^ Lagom is a Swedish word explaning a state of not too much, not too little, and just right, amount, quantity, or a level of strength.
 
@@ -166,6 +180,8 @@ We will remember you.
 # Photo / graphics credits
 
 * Title: [Photo by Masayoshi Yamase on Unsplash](https://unsplash.com/@myana)
+
+* Lagom: [Photo by Jen P. on Unsplash](https://unsplash.com/@talesbyjen)
 
 * Joe Armstrong: [Photo by Brian L. Troutwine](https://www.dropbox.com/sh/18w4l9vbmgu98ov/AAAiTRknnIBbJAOEmn72INRfa?dl=0), edited by Kenji Rikitake, licensed [CC BY-NC 4.0 International](https://creativecommons.org/licenses/by-nc/4.0/)
 
