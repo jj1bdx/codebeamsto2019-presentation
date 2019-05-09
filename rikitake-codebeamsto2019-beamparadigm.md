@@ -140,6 +140,32 @@ Stockholm, Sweden
 
 ---
 
+# Computer is as greedy as people: anti-lagom
+
+* People want *fast* actions: more speed in less time
+* Speed-first programming: cutting corners, less secure
+* People want more features (really?)
+* Feature bloat: bloatware, software inefficiency
+* Less stable, safe, and secure software
+
+^ I've been working in computer industry for almost 30 years. The industry is thoroughly anti-lagom. I've found the steady tendency of greed among the industry vendors and users: they always demand faster software with more features. Developers have to cut corners and deliver less secure software, with inefficient code. I've heard that security and privacy are the last priorities for many startup companies, if not all.
+
+---
+
+# Lagom: accuracy transcends speed
+
+* Safety transcends speed
+* Simplicity transcends rich features
+* Stability transcends convenience
+
+... these targets are more easily actualized by thinking a bit about how lagom your software is
+
+... and these are the phisolophy of *the BEAM programming paradigm*
+
+^ The lagom philosophy of BEAM language systems looks against the trend of faster and fancier software. But there's an old saying among telegraphy operators, which says "accuracy transcends speed". I'd like to extend this principle into the modern software: safety transcends speed, simplicity transcends rich features, stability transcends convenience. Thinking a bit about lagom, or the just right way of using programming resources, will get you closer to actualize these targets, and make your software a better one.
+
+---
+
 # Erlang's programming paradigms [^5]
 
 * Functional programming
