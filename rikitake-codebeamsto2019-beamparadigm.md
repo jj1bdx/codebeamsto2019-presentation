@@ -96,6 +96,8 @@ Stockholm, Sweden
 
 ---
 
+![](jen-p-541456-modified.jpg)
+
 # The philosophy of the BEAM languages/systems:
 # [fit] Lagom
 
@@ -103,44 +105,61 @@ Stockholm, Sweden
 
 ---
 
-![](jen-p-541456-modified.jpg)
+# [fit] Lagom: not too much, not too little, just right
 
-# Lagom
+## Lagom är bäst
 
-## [fit] not too much, not too little, just right
-## ` `
-## ` `
-## ` `
-## ` `
-## ` `
-## ` `
-## ` `
-## ` `
-## ` `
-## ` `
-## ` `
-## ` `
+### Just the right amount is best / enough is as good as a feast [^3]
 
-^ Lagom is a Swedish word explaning a state of not too much, not too little, and just right, amount, quantity, or a level of strength.
+[^3]: [Wikitionary entry of "Lagom är bäst"](https://en.wiktionary.org/w/index.php?title=lagom_%C3%A4r_b%C3%A4st&oldid=44679439)
+
+
+^ Lagom is a Swedish word explaning a state of not too much, not too little, and just right, amount, quantity, or a level of strength. There is a popular Swedish quote which says "Lagom är bäst", which means just the right amount is best.
 
 ---
 
-# [fit] 中庸
-## The doctrine of the Mean
-# μεσότης
-## Golden Middle Way
-# [fit] Lagom är bäst
+# Lagom in philosophy
 
-^ You can find a few philosophical concepts similar to lagom in the world. In China and Japan, the word Zhongyong or Chu-yaw, also called The doctrine of the Mean in English, is popular for not pursuing in the excessive ways. In the old Greek Ethics of Aristotle, it's called "mesotes", also called Golden Middle Way. And in Swedish, there's a phrase called Lagom är bäst, which means Lagom is best.
+## 中庸 / Zhōngyōng, Chu-yaw
+### Confucianism: Doctrine of the Mean
+## μεσότης / mesotes
+### Aristotle: Golden Mean
+
+^ You can find a few philosophical concepts similar to lagom in the world. In China and Japan, the word Zhongyong or Chu-yaw, also called The doctrine of the Mean in English, is popular for not pursuing in the excessive ways. In the old Greek Ethics of Aristotle, it's called "mesotes", also called Golden Mean, which is about the desirable middle between two extremes of excess and deficiency.
 
 ---
 
-# Quote from Programming Erlang [^3]
+# Quote from Programming Erlang [^4]
 
 ![inline, fit](programming-erlang-lagom.png)
 
 
-[^3]: Joe Armstrong, ["Programming Erlang", Second Edition, Pragmatic Bookshelf](https://pragprog.com/book/jaerlang2/programming-erlang), 2013, Section 26.3, "Parallelizing Sequential Code"
+[^4]: Joe Armstrong, ["Programming Erlang", Second Edition, Pragmatic Bookshelf](https://pragprog.com/book/jaerlang2/programming-erlang), 2013, Section 26.3, "Parallelizing Sequential Code"
+
+^ Joe Armstrong writes in his book of Programming Erlang that creating a lagom number of processes is essential, and that the word lagom summarizes the Swedish character. Joe is a British person, so I guess he found the usage of lagom intriguing.
+
+---
+
+# Erlang's programming paradigms [^5]
+
+* Functional programming
+* Message-passing concurrent programming
+* Multi-agent programming (Erlang processes)
+* Some shared states (Process dictionaries, ETS, Mnesia)
+
+[^5]: Peter Van Roy: [Programming Paradigms for Dummies: What Every Programmer Should Know](https://www.info.ucl.ac.be/~pvr/paradigms.html), 2009, Figure 2 (Taxonomy of programming paradigms) and Table 1 (Layered structure of a definitive programming language)
+
+^ Let's get back to the topic of programming paradigms. Peter Van Roy states Erlang has four major paradigms: functional programming, message-passing concurrent programming, multi-agent programming with the Erlang processes, and also including some shared states such as the process dictionaries, ETS, and Mnesia. These paradirm elements are also equally adaptive to Elixir and other BEAM languages.
+
+---
+
+# Hidden BEAM programming paradigms [^6]
+
+* Safety first, speed second
+* Strong enforcement of immutability
+* Shared-nothing and deep-copy storage handling (no reference)
+
+[^6]: Kenji Rikitake, [Erlang and Elixir Fest 2018 Keynote Presentation](https://speakerdeck.com/jj1bdx/erlang-and-elixir-fest-2018-keynote), 16-JUN-2018, Tokyo, Japan
 
 ---
 
@@ -188,6 +207,8 @@ We will remember you.
 * Title: [Photo by Masayoshi Yamase on Unsplash](https://unsplash.com/@myana)
 
 * Lagom: [Photo by Jen P. on Unsplash](https://unsplash.com/@talesbyjen)
+
+* Programming Erlang quote: from Pragmatic Bookshelf's EPUB ebook, underline added by Kenji Rikitake
 
 * Joe Armstrong: [Photo by Brian L. Troutwine](https://www.dropbox.com/sh/18w4l9vbmgu98ov/AAAiTRknnIBbJAOEmn72INRfa?dl=0), edited by Kenji Rikitake, licensed [CC BY-NC 4.0 International](https://creativecommons.org/licenses/by-nc/4.0/)
 
