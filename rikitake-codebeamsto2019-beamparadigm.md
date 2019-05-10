@@ -182,14 +182,75 @@ Stockholm, Sweden
 # A hidden BEAM programming paradigm and design: safety first, speed second [^6]
 
 * Strong enforcement of immutability
-* Shared-nothing and deep-copy storage handling (no reference)
+* Shared-nothing and deep-copy variables (no reference)
 * ... Programmers still can write dangerous code if needed
 
 [^6]: Kenji Rikitake, [Erlang and Elixir Fest 2018 Keynote Presentation](https://speakerdeck.com/jj1bdx/erlang-and-elixir-fest-2018-keynote), 16-JUN-2018, Tokyo, Japan
 
+^ On the other hand, BEAM programming languages have their own hidden paradigms, or design philosophy. I'd like to summarize them as "safety first, speed second" principle. I'd like to talk about three major points: strong and enforced immutability; shared-nothing and deep-copy storage handling; and giving exceptions to these restrictions when the programmer has to take the risks.
+
 ---
 
-# LISP is not necessarily immutable [^7]
+# Erlang's enforced strong immutability
+
+```erlang
+1> A = 10.
+10
+2> A = 20.
+** exception error: no match of right hand side value 20
+% Each variable can only be assigned *once and only once*
+3> B = [1, 2].
+[1,2]
+4> [_, X] = B, X.
+2 % Assignments are equivalent to the pattern matching
+```
+
+^ This is a simple example of how Erlang variables differ from the other programming languages. In this example, the second assignment of A is refused. This is because the assignment is equivalent to the pattern matching.
+
+---
+
+# Erlang's shared-nothing / deep-copy variables
+
+```erlang
+1> B = [1, 2]. % B is a list
+[1,2]
+2> C = B. % Copy B to C
+[1,2]
+3> f(C), C. % f(V): unbound variable V
+* 1: variable 'C' is unbound
+4> B.
+[1,2] % B still remains, not shared
+```
+
+^ This is another example of how Erlang treats structured objects such as lists. In this example, a list B is created, copied to C, and C becomes unbound by the Erlang shell pseudo-function f. Even this happens, B still remains there without affected by the deletion of C.
+
+---
+
+# Advantages of strong immutability and shared-nothing variables
+
+* Debugging gets easier: once a variable is assigned, it doesn't change until the function exits
+* The meaning attached to every variable must be clearly defined, because no shared meaning is allowed
+* Less accidental corruption of structured objects may happen
+
+---
+
+# Disadvantages of strong immutability and shared-nothing variables
+
+* Slow: all assignments imply deep copying
+* Much more memory space: *you cannot implicitly share*
+
+... Are they really disadvantages at the age of abundant processing power and memory space?
+
+---
+
+# Many of programming languages work in different ways *as default*
+
+## [fit] Variables can be assigned two or more times
+## [fit] Copy semantics differ between different data types
+
+---
+
+# LISP is not necessarily immutable, even it's a functional language [^7]
 
 ```lisp
 (defparameter *some-list* (list 'one 'two 'three 'four))
