@@ -179,13 +179,29 @@ Stockholm, Sweden
 
 ---
 
-# Hidden BEAM programming paradigms [^6]
+# A hidden BEAM programming paradigm and design: safety first, speed second [^6]
 
-* Safety first, speed second
 * Strong enforcement of immutability
 * Shared-nothing and deep-copy storage handling (no reference)
+* ... Programmers still can write dangerous code if needed
 
 [^6]: Kenji Rikitake, [Erlang and Elixir Fest 2018 Keynote Presentation](https://speakerdeck.com/jj1bdx/erlang-and-elixir-fest-2018-keynote), 16-JUN-2018, Tokyo, Japan
+
+---
+
+# LISP is not necessarily immutable [^7]
+
+```lisp
+(defparameter *some-list* (list 'one 'two 'three 'four))
+(rplaca *some-list* 'uno)
+(rplacd (last *some-list*) 'not-nil)
+; result by CLISP 2.49
+(ONE TWO THREE FOUR) ; original
+(UNO TWO THREE FOUR) ; head replaced
+(UNO TWO THREE FOUR . NOT-NIL) ; tail replaced
+```
+
+[^7]: [Source code example in Common LISP is from [Hyperspec Web site](http://clhs.lisp.se/Body/f_rplaca.htm), modified by Kenji Rikitake, run on [Wandbox](https://wandbox.org/#) with [CLISP](https://clisp.sourceforge.io/) 2.49
 
 ---
 
