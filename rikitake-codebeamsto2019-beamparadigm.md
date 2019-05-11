@@ -426,13 +426,15 @@ std::unique_ptr<std::vector<double>> u2 = std::move(u);
 
 ---
 
-# What made me perplexed by these languages
+# These languages perplex me by: [^10]
 
 * Different actions for different data types
 * Constructors (and destructors)
 * Copy semantics (C#: value type, reference type)
 * Shallow-copied objects = no immutability
 * Shared state and references as default
+
+[^10]: Rikitake, K.: Shared Nothing Secure Programming in Erlang/OTP, IEICE Technical Report IA2014-11/ICSS2014-11, Vol. 114, No. 70, pp. 55--60 (2014). [(Slide PDF)](https://speakerdeck.com/jj1bdx/otp)
 
 ---
 
@@ -442,6 +444,8 @@ std::unique_ptr<std::vector<double>> u2 = std::move(u);
 * Creation of objects need explicit actions
 * Explicit use of reference
 * Object isolation is the programmer's responsibility
+
+*... mostly for speed and cutting corners*
 
 ---
 
@@ -462,11 +466,42 @@ std::unique_ptr<std::vector<double>> u2 = std::move(u);
 * Prohibit use of reference
 * Object isolation is the language's responsibility
 
+*... for security first, and lagom speed second*
+
 ---
 
 # [fit] The BEAM Programming Paradigm difference
 # [fit] from the popularly-used shared-state object-oriented languages:
-# [fit] Choice of default programming mode
+# [fit] Choice of default data copying mode
+# [fit] By choosing *lagom* speed traded in for much more secure programming
+
+---
+[.background-color: #666666]
+
+![left, fit](icss26-model-se.png)
+![right, fit](icss26-model-sn.png)
+
+---
+[.background-color: #333333]
+
+![left, fit](icss26-model-se.png)
+![right, fit](icss26-model-sn.png)
+
+# Shared state .vs. distributed state:
+# Which model is safer?
+# Which model is more secure?
+# Which model causes less bugs?
+
+---
+
+# Topics excluded from this talk
+
+* BEAM architecture [^11]
+* Concurrency models
+* Process supervision and signals
+* How BEAM languages handle shared states
+
+[^11]: Erik Stemman, [The Beam Book](https://blog.stenmans.org/theBeamBook/)
 
 ---
 
@@ -501,6 +536,8 @@ We will remember you.
 
 ---
 
+![](raphael-andres-430356-unsplash.jpg)
+
 # [fit] Thank you
 # [fit] Questions?
 
@@ -511,15 +548,17 @@ We will remember you.
 
 # Photo / graphics credits
 
-* Title: [Photo by Masayoshi Yamase on Unsplash](https://unsplash.com/@myana)
+* [Title](https://unsplash.com/photos/peAbdH4O8GM): [Photo by Masayoshi Yamase on Unsplash](https://unsplash.com/@myana)
 
-* Lagom: [Photo by Jen P. on Unsplash](https://unsplash.com/@talesbyjen)
+* [Lagom](https://unsplash.com/photos/_EiuAQtkyKo): [Photo by Jen P. on Unsplash](https://unsplash.com/@talesbyjen)
 
-* Programming Erlang quote: from Pragmatic Bookshelf's EPUB ebook, underline added by Kenji Rikitake
+* Programming Erlang quote: from Pragmatic Bookshelf's EPUB ebook rendered by iBooks on macOS 10.14.4, underline added by Kenji Rikitake
 
 * Joe Armstrong: [Photo by Brian L. Troutwine](https://www.dropbox.com/sh/18w4l9vbmgu98ov/AAAiTRknnIBbJAOEmn72INRfa?dl=0), edited by Kenji Rikitake, licensed [CC BY-NC 4.0 International](https://creativecommons.org/licenses/by-nc/4.0/)
 
 * Pepabo R&D Institute Logo: GMO Pepabo, Inc.
+
+* [Thank you page](https://unsplash.com/photos/3cwvFD-YPtk): [Photo by Raphael Andres on Unsplash](https://unsplash.com/@raphaeldas)
 
 * All the other photos: Kenji Rikitake
 
