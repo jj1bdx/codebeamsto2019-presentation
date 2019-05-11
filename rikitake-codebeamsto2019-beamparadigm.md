@@ -371,7 +371,7 @@ iex(2)> a = 20; [a, b]
 (UNO TWO THREE FOUR . NOT-NIL) ; tail replaced
 ```
 
-[^9]: [Source code example in Common LISP is from [Hyperspec Web site](http://clhs.lisp.se/Body/f_rplaca.htm), modified by Kenji Rikitake, run on [Wandbox](https://wandbox.org/#) with [CLISP](https://clisp.sourceforge.io/) 2.49
+[^9]: Source code example from [Hyperspec Web site](http://clhs.lisp.se/Body/f_rplaca.htm), modified by Kenji Rikitake, run on [Wandbox](https://wandbox.org/#) with [CLISP](https://clisp.sourceforge.io/) 2.49
 
 ---
 
