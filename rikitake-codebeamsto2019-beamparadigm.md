@@ -244,7 +244,6 @@ end
 ```
 
 ---
-[.code-highlight: 1, 3-5]
 
 # Erlang's ambiguity on case expression (2)
 
@@ -295,7 +294,6 @@ end
 ```
 
 ---
-[.code-highlight: 3-6]
 
 # Elixir on case expression (2)
 
@@ -394,28 +392,49 @@ false // WHY?
 
 ---
 
+# C# also has a complicated copy semantics
+
+Type int is copied-by-value, List is copied-by-reference (why??)
+
+```csharp
+using System.Collections.Generic;
+int i = 100;
+List<int> a = new List<int>(){10, 20};
+MutableMethod(i, a);
+void MutableMethod(int i, List<int> a) { 
+  i = 200; a.Add(30);
+}
+```
+
+Result: `i = 100, a = {10, 20, 30}`
+
+---
+
 # C++: can you tell the difference?
 
 ```C++
 double func(std::vector<double> x);
-double func(std::vector<double> &x); // with reference
-double func(std::unique_ptr<std::vector<double>> x);
-double func(std::shared_ptr<std::vector<double>> x);
+double func(std::vector<double> &v); // with reference
+double func(std::unique_ptr<std::vector<double>> u);
+double func(std::shared_ptr<std::vector<double>> s);
 
 std::vector<double> y = x;
-std::vector<double> &y = x; // with reference
-std::unique_ptr<std::vector<double>> y = std::move(x);
-// Can't! -> std::unique_ptr<std::vector<double>> y = x;
+std::vector<double> &w = v; // with reference
+std::unique_ptr<std::vector<double>> u2 = std::move(u);
+// You cannot -> std::unique_ptr<std::vector<double>> u3 = u;
 ```
 
 ... actually, I'm not sure I can accurately explain the difference.
 
 ---
 
-# [fit] What made me perplexed in these OOP languages?
-## Constructors
-## Shallow-copied objects = no immutability
-## Copy semantics
+# What made me perplexed by these languages
+
+* Different actions for different data types
+* Constructors (and destructors)
+* Copy semantics (C#: value type, reference type)
+* Shallow-copied objects = no immutability
+* Shared state and references
 
 ---
 
