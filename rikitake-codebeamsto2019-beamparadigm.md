@@ -182,59 +182,170 @@ Stockholm, Sweden
 # A hidden BEAM programming paradigm and design: safety first, speed second [^6]
 
 * Strong enforcement of immutability
-* Shared-nothing and deep-copy variables (no reference)
+* deep-copied variables, no references
 * ... Programmers still can write dangerous code if needed
 
 [^6]: Kenji Rikitake, [Erlang and Elixir Fest 2018 Keynote Presentation](https://speakerdeck.com/jj1bdx/erlang-and-elixir-fest-2018-keynote), 16-JUN-2018, Tokyo, Japan
 
-^ On the other hand, BEAM programming languages have their own hidden paradigms, or design philosophy. I'd like to summarize them as "safety first, speed second" principle. I'd like to talk about three major points: strong and enforced immutability; shared-nothing and deep-copy storage handling; and giving exceptions to these restrictions when the programmer has to take the risks.
+^ On the other hand, BEAM programming languages have their own hidden paradigms, or design philosophy. I'd like to summarize them as "safety first, speed second" principle. I'd like to talk about three major points: strong and enforced immutability; deep-copied storage handling; and giving exceptions to these restrictions when the programmer has to take the risks.
 
 ---
 
-# Erlang's enforced strong immutability
+# Immutability [^7]
+
+* Once the value is stored, it cannot be changed
+* No mutable variables on either Erlang or Elixir, *unless explicitly stated as an external function (e.g., ETS) or processes*
+* Immutability makes debugging easier because all stored values of created objects during actions remain untouched
+
+[^7]: José Valim, [Comparing Elixir and Erlang variables](http://blog.plataformatec.com.br/2016/01/comparing-elixir-and-erlang-variables/), Plataformatec blog, January 12, 2016
+
+---
+
+# Variable binding strategies between Erlang and Elixir differs with each other
+
+* Erlang: single binding only, with implicit pattern matching
+* Elixir: multiple binding allowed as default, pattern matching enforceable with the pin (`^`) operator
+
+---
+
+# Erlang enforces single binding variables
 
 ```erlang
 1> A = 10.
 10
 2> A = 20.
 ** exception error: no match of right hand side value 20
-% Each variable can only be assigned *once and only once*
+% Each variable can only be bound *once and only once*
 3> B = [1, 2].
 [1,2]
 4> [_, X] = B, X.
-2 % Assignments are equivalent to the pattern matching
+2 % Bindings are equivalent to the pattern matching
 ```
 
-^ This is a simple example of how Erlang variables differ from the other programming languages. In this example, the second assignment of A is refused. This is because the assignment is equivalent to the pattern matching.
+^ This is a simple example of how Erlang variables differ from the other programming languages. In this example, the second binding of A is refused. This is because the binding is equivalent to the pattern matching.
 
 ---
 
-# Erlang's shared-nothing / deep-copy variables
+# Advantages of Erlang's single-binding variables
+
+* Debugging gets easier: once a variable is bound, it doesn't change until the function exits
+* The meaning attached to every variable must be clearly defined, because no shared meaning is allowed
+
+---
+
+# Erlang's ambiguity on case expression (1)
 
 ```erlang
-1> B = [1, 2]. % B is a list
-[1,2]
-2> C = B. % Copy B to C
-[1,2]
-3> f(C), C. % f(V): unbound variable V
-* 1: variable 'C' is unbound
-4> B.
-[1,2] % B still remains, not shared
+case an_expr() of
+  % S is bound to an_expr()'s result
+  {ok, S} -> do_when_matched();
+  _ -> do_when_unmatched()
+end
 ```
 
-^ This is another example of how Erlang treats structured objects such as lists. In this example, a list B is created, copied to C, and C becomes unbound by the Erlang shell pseudo-function f. Even this happens, B still remains there without affected by the deletion of C.
+---
+[.code-highlight: 1, 3-5]
+
+# Erlang's ambiguity on case expression (2)
+
+```erlang
+S = something % newly added
+case an_expr() of
+  % an_expr()'s result is pattern-matched implicitly
+  % to the result of previous S instead
+  {ok, S} -> do_when_matched();
+  _ -> do_when_unmatched()
+end
+```
 
 ---
 
-# Advantages of strong immutability and shared-nothing variables
+# Elixir allows variable rebinding [^8]
 
-* Debugging gets easier: once a variable is assigned, it doesn't change until the function exits
-* The meaning attached to every variable must be clearly defined, because no shared meaning is allowed
-* Less accidental corruption of structured objects may happen
+```elixir
+iex(1)> a = 10
+10 
+iex(2)> a = 20
+20 # a is rebound
+# pin operator forces pattern matching without rebinding
+iex(3)> ^a = 40 
+** (MatchError) no match of right hand side value: 40
+```
+
+[^8]: [Stack Overflow: What is the “pin” operator for, and are Elixir variables mutable?](https://stackoverflow.com/a/27975233/417862)
 
 ---
 
-# Disadvantages of strong immutability and shared-nothing variables
+# Advantages of Elixir's multiple binding
+
+* Aligning well with the default behavior of many other languages
+* Pattern-matching is explicitly controllable to remove ambiguity, e.g. for case expressions
+
+---
+
+# Elixir on case expression (1)
+
+```elixir
+s = :a_previous_value
+case an_expr() do
+  # s is bound to an_expr()'s result anyway
+  {:ok, s} -> do_when_matched()
+  _ -> do_when_unmatched()
+end
+```
+
+---
+[.code-highlight: 3-6]
+
+# Elixir on case expression (2)
+
+```elixir
+s = :a_previous_value
+case an_expr() do
+  # an_expr()'s result is explicitly pattern-matched
+  # with the content of s (:a_previous_value)
+  # by the pin operator before s
+  {:ok, ^s} -> do_when_matched()
+  _ -> do_when_unmatched()
+end
+```
+
+---
+
+# Erlang's deep-copied variables
+
+```erlang
+1> A = 10, B = [A, 30].
+[10,30]
+2> f(A), A. % f(A): unbind A
+* 1: variable 'A' is unbound
+3> B.
+[10,30] # old A remains in B
+```
+
+^ This is an example of how Erlang treats structured objects such as lists. In this example, a list B is created with one of the elements is A, and A becomes unbound by the Erlang shell pseudo-function f. Even this happens, the old A still remains there in B without affected by the unbinding of the old A.
+
+---
+
+# Elixir's deep-copied variables
+
+```elixir
+iex(1)> a = 10; b = [a, 30]
+[10, 30]
+iex(2)> a = 20; [a, b]
+[20, [10, 30]] # old a remains in b
+```
+
+---
+
+# Advantage of deep-copied variables
+
+* Immutable, by always creating new object bodies for copying
+* The same copy semantics is applied regardless of the data types, especially between simple (integers, atoms) and structured (lists, tuples, maps) types
+
+---
+
+# Disadvantages of shared-nothing / deep-copied variables
 
 * Slow: all assignments imply deep copying
 * Much more memory space: *you cannot implicitly share*
@@ -245,12 +356,12 @@ Stockholm, Sweden
 
 # Many of programming languages work in different ways *as default*
 
-## [fit] Variables can be assigned two or more times
+## [fit] Variables are not necessarily immutable
 ## [fit] Copy semantics differ between different data types
 
 ---
 
-# LISP is not necessarily immutable, even it's a functional language [^7]
+# LISP is not necessarily immutable, even it's a functional language [^9]
 
 ```lisp
 (defparameter *some-list* (list 'one 'two 'three 'four))
@@ -262,7 +373,49 @@ Stockholm, Sweden
 (UNO TWO THREE FOUR . NOT-NIL) ; tail replaced
 ```
 
-[^7]: [Source code example in Common LISP is from [Hyperspec Web site](http://clhs.lisp.se/Body/f_rplaca.htm), modified by Kenji Rikitake, run on [Wandbox](https://wandbox.org/#) with [CLISP](https://clisp.sourceforge.io/) 2.49
+[^9]: [Source code example in Common LISP is from [Hyperspec Web site](http://clhs.lisp.se/Body/f_rplaca.htm), modified by Kenji Rikitake, run on [Wandbox](https://wandbox.org/#) with [CLISP](https://clisp.sourceforge.io/) 2.49
+
+---
+
+# JavaScript has a complicated copy semantics
+
+```javascript
+// var a = {first: 1, second: 2}
+// b = a // only sharing *references*
+{ first: 1, second: 2 }
+// a.second = 3
+3
+// b // changing a also changes b
+{ first: 1, second: 3 }
+// b == { first: 1, second: 3 }
+false // WHY?
+// The right-hand side is a *constructor*
+```
+
+---
+
+# C++: can you tell the difference?
+
+```C++
+double func(std::vector<double> x);
+double func(std::vector<double> &x); // with reference
+double func(std::unique_ptr<std::vector<double>> x);
+double func(std::shared_ptr<std::vector<double>> x);
+
+std::vector<double> y = x;
+std::vector<double> &y = x; // with reference
+std::unique_ptr<std::vector<double>> y = std::move(x);
+// Can't! -> std::unique_ptr<std::vector<double>> y = x;
+```
+
+... actually, I'm not sure I can accurately explain the difference.
+
+---
+
+# [fit] What made me perplexed in these OOP languages?
+## Constructors
+## Shallow-copied objects = no immutability
+## Copy semantics
 
 ---
 
