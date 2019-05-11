@@ -394,16 +394,14 @@ false // WHY?
 
 # C# also has a complicated copy semantics
 
-Type int is copied-by-value, List is copied-by-reference (why??)
+Type int is value copied, List is *reference* copied (why??)
 
 ```csharp
 using System.Collections.Generic;
-int i = 100;
-List<int> a = new List<int>(){10, 20};
+int i = 100; List<int> a = new List<int>(){10, 20};
 MutableMethod(i, a);
 void MutableMethod(int i, List<int> a) { 
-  i = 200; a.Add(30);
-}
+  i = 200; a.Add(30); }
 ```
 
 Result: `i = 100, a = {10, 20, 30}`
@@ -434,7 +432,41 @@ std::unique_ptr<std::vector<double>> u2 = std::move(u);
 * Constructors (and destructors)
 * Copy semantics (C#: value type, reference type)
 * Shallow-copied objects = no immutability
-* Shared state and references
+* Shared state and references as default
+
+---
+
+# Design of these languages
+
+* Avoid object copying
+* Creation of objects need explicit actions
+* Explicit use of reference
+* Object isolation is the programmer's responsibility
+
+---
+
+# What BEAM languages provide
+
+* Same actions for all data types
+* No need for explicit constructors/destructors
+* Single copy semantics (deep copy)
+* Deep copied objects = immutability
+* No shared state, no reference, as default
+
+---
+
+# Design of BEAM languages
+
+* Deep-copying as default
+* New objects are always created by assignments
+* Prohibit use of reference
+* Object isolation is the language's responsibility
+
+---
+
+# [fit] The BEAM Programming Paradigm difference
+# [fit] from the popularly-used shared-state object-oriented languages:
+# [fit] Choice of default programming mode
 
 ---
 
