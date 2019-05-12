@@ -248,7 +248,7 @@ end
 # Erlang's ambiguity on case expression (2)
 
 ```erlang
-S = something % newly added
+S = something, % newly added
 case an_expr() of
   % an_expr()'s result is pattern-matched implicitly
   % to the result of previous S instead
