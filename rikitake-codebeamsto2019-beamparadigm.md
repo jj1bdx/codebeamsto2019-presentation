@@ -14,14 +14,6 @@ slidenumbers: true
 ## ` `
 ## ` `
 ## ` `
-## ` `
-## ` `
-## ` `
-## ` `
-## ` `
-## ` `
-## ` `
-## ` `
 ## Kenji Rikitake | @jj1bdx
 ## #CodeBEAMSTO 2019
 
