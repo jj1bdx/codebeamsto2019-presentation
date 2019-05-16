@@ -29,7 +29,7 @@ Code Beam STO 2019
 Stockholm, Sweden
 @jj1bdx
 
-^ Good afternoon, everybody. My name is Kenji Rikitake. I'm originally from Tokyo, Japan, and I'm going to talk about the BEAM Programming Paradigm.
+^ Good afternoon, my name is Kenji Rikitake. I'm an Erlang user since 2008. I'm a freelance software engineer and consultant, and a co-creator of Erlang rand module. I'm going to talk about the BEAM Programming Paradigm.
 
 ---
 
