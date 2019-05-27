@@ -64,7 +64,7 @@ Stockholm, Sweden
 # Languages -> paradigms -> concepts
 
 * Many languages belong to one paradigm
-* A languages may have many paradigms available
+* A language may have many paradigms available
 * A paradigm may have many concepts
 
 ## [fit] Peter Van Roy states there are 27 different programming paradigms [^2]
